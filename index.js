@@ -1,36 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // ===== MENU LATERAL =====
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
     const body = document.body;
-    const themeToggle = document.getElementById("themeToggle");
 
-    // ===== MENU LATERAL =====
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('show');
-        body.classList.toggle('menu-open');
-    });
-
-    // ===== SWITCH DE TEMA =====
-    if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark");
-        themeToggle.checked = true;
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            body.classList.toggle('menu-open');
+        });
     }
 
-    themeToggle.addEventListener("change", () => {
-        if (themeToggle.checked) {
-            body.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            body.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    });
+    // ===== SWITCH DE TEMA =====
+    const themeToggle = document.getElementById("themeToggle");
 
-    // ===== ESTRELAS DIAGONAIS (CORRIGIDO) =====
+    if (themeToggle) {
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark");
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener("change", () => {
+            if (themeToggle.checked) {
+                body.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                body.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            }
+        });
+    }
+
+    // ===== ESTRELAS DE FUNDO =====
     const totalStars = 150;
     const starContainer = document.getElementById('star-container');
 
-    if (starContainer) { // Adiciona uma verificação para segurança
+    if (starContainer) {
         for (let i = 0; i < totalStars; i++) {
             const star = document.createElement('div');
             star.classList.add('background-star');
@@ -53,15 +58,62 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const togglePassword = document.getElementById('togglePassword');
-    const senha = document.getElementById('senha');
+    // ===== TOGGLE SENHA =====
+    const togglePassword = document.getElementById("togglePassword");
+    const senha = document.getElementById("senha");
 
-    togglePassword.addEventListener('click', () => {
-        // alterna o tipo do input
-        const type = senha.getAttribute('type') === 'password' ? 'text' : 'password';
-        senha.setAttribute('type', type);
+    if (togglePassword && senha) {
+        togglePassword.addEventListener("click", () => {
+            const type = senha.type === "password" ? "text" : "password";
+            senha.type = type;
+            togglePassword.classList.toggle("fa-eye-slash");
+        });
+    }
 
-        // alterna o ícone
-        togglePassword.classList.toggle('fa-eye-slash');
-    });
+    const toggleConfirma = document.getElementById("toggleConfirmaSenha");
+    const confirmaSenha = document.getElementById("confirmaSenha");
+
+    if (toggleConfirma && confirmaSenha) {
+        toggleConfirma.addEventListener("click", () => {
+            const type = confirmaSenha.type === "password" ? "text" : "password";
+            confirmaSenha.type = type;
+            toggleConfirma.classList.toggle("fa-eye-slash");
+        });
+    }
+
+    // ===== MÁSCARA DE CPF =====
+    const cpfInput = document.getElementById("cpf");
+    if (cpfInput) {
+        cpfInput.addEventListener("input", () => {
+            let value = cpfInput.value.replace(/\D/g, "");
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 9) {
+                value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            } else if (value.length > 6) {
+                value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+            } else if (value.length > 3) {
+                value = value.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+            }
+            cpfInput.value = value;
+        });
+    }
+
+    // ===== VALIDAÇÃO DO FORMULÁRIO =====
+    const form = document.getElementById("registroForm");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            if (senha.value !== confirmaSenha.value) {
+                e.preventDefault();
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            if (!cpfInput || cpfInput.value.length < 14) {
+                e.preventDefault();
+                alert("Digite um CPF válido!");
+                return;
+            }
+        });
+    }
 });
