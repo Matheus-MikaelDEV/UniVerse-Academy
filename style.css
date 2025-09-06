@@ -298,6 +298,36 @@ body.dark .menu-toggle {
     padding: 20px;
 }
 
+/* ===== SWITCH DE TEMA FIXO E RESPONSIVO ===== */
+.theme-switch.fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1600;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-switch.fixed:hover {
+    transform: scale(1.05);
+}
+
+body.dark .theme-switch.fixed {
+    background: #2a2a2a;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 480px) {
+    .theme-switch.fixed {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px;
+    }
+}
+
 .theme-switch input {
     display: none;
 }
@@ -358,6 +388,35 @@ body.dark .menu-toggle {
 .theme-switch input:checked + .switch .fa-moon {
     opacity: 1;
     transform: rotate(0deg);
+}
+
+/* ===== FIXO E RESPONSIVO ===== */
+.theme-switch.fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1600;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-switch.fixed:hover {
+    transform: scale(1.05);
+}
+
+body.dark .theme-switch.fixed {
+    background: #2a2a2a;
+}
+
+@media (max-width: 480px) {
+    .theme-switch.fixed {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px;
+    }
 }
 
 /* ===== PROFESSOR FIXO ===== */
@@ -512,7 +571,6 @@ body.dark .background-star { background-color: #ffffff; }
     flex-direction: column;
     align-items: center;
     z-index: 2000;
-
     backface-visibility: hidden;
     will-change: transform;
 }
@@ -522,7 +580,7 @@ body.dark .background-star { background-color: #ffffff; }
     font-size: clamp(2.2rem, 6vw, 3rem);
     margin-bottom: 25px;
     font-weight: 900;
-    color: #b84dff; /* roxo menos saturado */
+    color: #b84dff;
     animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -532,9 +590,6 @@ body:not(.dark) .login-wrapper h1 {
             0 0 1px #cc99ff,
             0 0 3px #d699ff,
             0 0 5px #cc99ff;
-}
-
-body:not(.dark) .login-wrapper h1 {
     animation: glowLight 2s ease-in-out infinite alternate;
 }
 
@@ -652,7 +707,6 @@ body.dark .login-container input {
     z-index: 5;
 }
 
-/* Tema escuro */
 body.dark .footer {
     background: #1e1e1e;
     color: #f1f1f1;
@@ -666,7 +720,7 @@ body.dark .footer {
 
 .password-wrapper input {
     width: 100%;
-    padding-right: 40px; /* espaço para o ícone */
+    padding-right: 40px;
 }
 
 .password-wrapper i {
@@ -704,7 +758,6 @@ body.dark .footer {
     background: linear-gradient(135deg, #b200e5, #cc00ff);
 }
 
-/* Tema escuro */
 body.dark .menu p {
     color: #ffffff;
     background: linear-gradient(135deg, #8000a9, #b200e5);
@@ -766,6 +819,44 @@ body.dark .register-redirect a:hover {
     gap: 15px;
 }
 
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+    .login-wrapper h1 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+}
+
+.icons-wrapper a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f3f3f3;
+    color: #333;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.icons-wrapper a:hover {
+    background-color: #cc00ff;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+body.dark .icons-wrapper a {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+body.dark .icons-wrapper a:hover {
+    background-color: #aa00cc;
+    color: #fff;
+}
 /* ===== ICONE SOCIAL ===== */
 .social-icon {
     display: flex;
@@ -843,8 +934,7 @@ body.dark .modulo-card p {
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-
-/* ===== MODULOS DE APRESENTAÇÃO ===== */
+/* ===== MODULOS DE APRESENTAÇÃO (variação com destaque) ===== */
 .modulos-wrapper {
     display: flex;
     justify-content: center;
@@ -857,8 +947,8 @@ body.dark .modulo-card p {
 }
 
 .modulo-card {
-    flex: 0 0 350px; /* largura fixa (pode aumentar para 380px, 400px, etc.) */
-    height: 450px;   /* altura fixa maior */
+    flex: 0 0 350px;
+    height: 450px;
     background-color: #ffffff;
     border-radius: 25px;
     padding: 30px 25px;
@@ -866,15 +956,14 @@ body.dark .modulo-card p {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* Card do meio (destaque) */
+
 .modulo-card.destaque {
-    margin-top: 0; /* fica mais alto */
+    margin-top: 0;
 }
 
-/* Laterais descem um pouco no Y */
 .modulo-card.esquerda,
 .modulo-card.direita {
-    margin-top: 120px; /* ajusta a altura dos lados */
+    margin-top: 120px;
 }
 
 body.dark .modulo-card {
@@ -908,7 +997,7 @@ body.dark .modulo-card p {
 h1.home-title {
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 450;
-    color: #cc00ff; /* base roxa */
+    color: #cc00ff;
     text-align: center;
     letter-spacing: 2px;
     margin: 40px 0 20px 0;
@@ -916,13 +1005,12 @@ h1.home-title {
     transition: transform 0.3s ease;
 }
 
-/* Hover para efeito de destaque */
 h1.home-title:hover {
     transform: scale(1.05);
     cursor: default;
 }
 
-/* Tema claro - glow suave */
+/* Tema claro */
 body:not(.dark) h1.home-title {
     text-shadow:
             0 0 2px #cc99ff,
@@ -946,9 +1034,9 @@ body:not(.dark) h1.home-title {
     }
 }
 
-/* Tema escuro - glow */
+/* Tema escuro */
 body.dark h1.home-title {
-    color: #b84dff; /* menos saturado */
+    color: #b84dff;
     text-shadow:
             0 0 3px #b84dff,
             0 0 8px #9933cc,
@@ -981,7 +1069,6 @@ body.dark h1.home-title {
     z-index: 3;
 }
 
-
 .cta-fixed-button a {
     display: inline-block;
     background: linear-gradient(45deg, #cc00ff, #b200e5, #ff33ff);
@@ -1002,7 +1089,6 @@ body.dark h1.home-title {
     background: linear-gradient(45deg, #ff33ff, #cc00ff, #b200e5);
 }
 
-/* Pulse animation */
 @keyframes pulseGlow {
     0% {
         box-shadow: 0 0 15px rgba(204,0,255,0.5), 0 0 30px rgba(204,0,255,0.3);
@@ -1015,6 +1101,37 @@ body.dark h1.home-title {
     }
 }
 
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .modulo-card {
+        flex: 1 1 100%;
+        height: auto;
+        margin-top: 40px !important;
+    }
+    .cta-fixed-button {
+        margin-top: -50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    h1.home-title {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+    }
+    .cta-fixed-button a {
+        font-size: 1.2rem;
+        padding: 14px 28px;
+    }
+    .modulo-card {
+        flex: 1 1 100%;
+        height: auto;
+        margin-top: 20px !important;
+    }
+}
 /* Tema escuro */
 body.dark .cta-fixed-button a {
     background: linear-gradient(45deg, #8000a9, #b200e5, #cc00ff);
@@ -1114,5 +1231,15 @@ body.menu-open .login-wrapper {
 @media (max-width: 768px) {
     body.menu-open .login-wrapper {
         transform: translate(calc(-50% + 200px), -40%);
+    }
+}
+
+/* ===== RESPONSIVO EXTRA ===== */
+@media (max-width: 480px) {
+    .logo-container img {
+        max-width: 280px;
+    }
+    .beneficio-card {
+        max-width: 90%;
     }
 }
