@@ -1,111 +1,83 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewp   ort" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniVerse Academy - Formação Docente de Qualidade</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-<!-- ===== ESTRELAS DE FUNDO ===== -->
-<div id="star-container"></div>
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
 
-<h1 class="home-title">Bem-vindo à UniVerse Academy</h1>
+<button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
 
-<!-- ===== MÓDULOS DE APRESENTAÇÃO ===== -->
-<section class="modulos-wrapper">
-    <div class="modulo-card esquerda">
-        <h3>Objetivo</h3>
-        <p>
-            Nosso objetivo é proporcionar uma experiência única de aprendizado interativo, oferecendo cursos de
-            alta qualidade, recursos práticos e suporte para que você alcance seus sonhos.
-        </p>
-    </div>
-
-    <div class="modulo-card destaque">
-        <h3>O que é a UniVerse Academy?</h3>
-        <p>
-            A UniVerse Academy é uma plataforma inovadora de aprendizado que conecta você a conteúdos modernos
-            de tecnologia, ciência e desenvolvimento pessoal. Nosso objetivo é tornar o conhecimento acessível
-            e dinâmico para todos.
-        </p>
-    </div>
-
-    <div class="modulo-card direita">
-        <h3>O que se deve esperar?</h3>
-        <p>
-            Ao se juntar à UniVerse Academy, você terá acesso a aulas envolventes, uma comunidade ativa e
-            conteúdos constantemente atualizados, preparados especialmente para o seu crescimento.
-        </p>
-    </div>
-</section>
-
-<!-- ===== LOGO E BENEFÍCIOS ===== -->
-<section class="logo-beneficios">
-    <div class="logo-container">
-        <img src="universe-academy-logo.png" alt="Universe Academy Logo">
-    </div>
-
-    <div class="beneficios">
-        <div class="beneficio-card">
-            <h4>📜 Certificado Garantido</h4>
-            <p>Ao concluir seu curso, você recebe um certificado válido para impulsionar sua carreira.</p>
-        </div>
-        <div class="beneficio-card">
-            <h4>🎓 Cursos Gratuitos</h4>
-            <p>Cursos de alto nível sem nenhum custo para você aproveitar o máximo do aprendizado.</p>
-        </div>
-        <div class="beneficio-card">
-            <h4>🚀 Ensino de Alto Nível</h4>
-            <p>Professores qualificados e conteúdo atualizado com o mercado.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== MENU LATERAL ===== -->
-<nav class="menu">
-
+<nav class="menu" aria-hidden="true">
     <div class="menu-header">
-        <h2>UniVerse</h2>
+        <h2>Menu</h2>
     </div>
-    <p>Aprenda um pouco sobre à UniVerse Academy e depois faça seu Login!  😉</p>
+    <p>Navegue pelas seções da nossa plataforma e descubra nossos diferenciais.</p>
+
     <div class="theme-switch">
-        <input type="checkbox" id="themeToggle">
-        <label for="themeToggle" class="switch">
-            <span class="slider">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-            </span>
-        </label>
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="switch"></label>
     </div>
 </nav>
 
-<!-- ===== BOTÃO FIXO ABAIXO ===== -->
-<div class="cta-fixed-button">
-    <a href="login.html">Acesso Gratuito!</a>
-</div>
+<main>
+    <div class="content-wrapper">
 
-<!-- ===== BOTÃO TOGGLE MENU ===== -->
-<button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <section class="hero-section">
+            <h1>A Plataforma Definitiva para a Formação de Docentes Excepcionais</h1>
+            <p class="subtitle">
+                Na UniVerse Academy, conectamos educadores a metodologias inovadoras, ferramentas de ponta e uma comunidade de especialistas para transformar a educação com qualidade e impacto.
+            </p>
+            <a href="#formacoes" class="cta-btn">Conheça a Plataforma</a>
+        </section>
 
-<!-- ===== PROFESSOR FIXO ===== -->
-<div class="professor-wrapper">
-    <div class="professor">
-        <img src="cabeca.png" alt="Cabeça do Professor" class="professor-head">
-        <img src="corpo.png" alt="Corpo do Professor" class="professor-body">
+        <section class="features-section">
+            <h2>Pilares da Nossa Formação de Qualidade</h2>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Metodologias Inovadoras</h3>
+                    <p>Domine técnicas de ensino que engajam, como sala de aula invertida, gamificação e aprendizagem baseada em projetos, criando aulas inesquecíveis.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Cursos Gratuitos e Acessíveis</h3>
+                    <p>Acreditamos na educação aberta. Oferecemos acesso gratuito aos nossos módulos fundamentais, permitindo que todo educador inicie sua jornada sem barreiras.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Desenvolvimento Contínuo</h3>
+                    <p>Faça parte de uma rede exclusiva de educadores. Troque experiências, participe de workshops e tenha acesso a um plano de desenvolvimento profissional contínuo.</p>
+                </div>
+
+            </div>
+        </section>
+
     </div>
-    <div class="speech-bubble">Olá! Bem-vindo à UniVerse Academy! 👋</div>
-</div>
+</main>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
-    <div class="footer-container">
-        <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
-    </div>
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
 </footer>
 
 <script src="index.js"></script>
+
 </body>
 </html>

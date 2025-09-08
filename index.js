@@ -1,119 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // ===== MENU LATERAL =====
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ===== 1. SELEÇÃO DOS ELEMENTOS =====
     const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.menu');
-    const body = document.body;
+    const sideMenu = document.querySelector('.menu');
+    const themeToggle = document.getElementById('theme-toggle');
 
-    if (menuToggle && menu) {
+
+    // ===== 2. FUNCIONALIDADE DO MENU LATERAL =====
+    if (menuToggle && sideMenu) {
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('show');
-            body.classList.toggle('menu-open');
+            // Alterna a classe 'active' para mostrar/esconder o menu e animar o botão
+            menuToggle.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+
+            // Atualiza os atributos de acessibilidade
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            sideMenu.setAttribute('aria-hidden', isExpanded);
         });
     }
 
-    // ===== SWITCH DE TEMA =====
-    const themeToggle = document.getElementById("themeToggle");
 
+    // ===== 3. FUNCIONALIDADE DO SELETOR DE TEMA (LIGHT/DARK) =====
     if (themeToggle) {
-        if (localStorage.getItem("theme") === "dark") {
-            body.classList.add("dark");
-            themeToggle.checked = true;
-        }
+        // Função para aplicar o tema salvo no localStorage ao carregar a página
+        const applySavedTheme = () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Padrão é 'dark'
 
-        themeToggle.addEventListener("change", () => {
-            if (themeToggle.checked) {
-                body.classList.add("dark");
-                localStorage.setItem("theme", "dark");
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.checked = true; // Marca o checkbox se o tema for claro
             } else {
-                body.classList.remove("dark");
-                localStorage.setItem("theme", "light");
+                document.body.classList.remove('light-theme');
+                themeToggle.checked = false; // Desmarca o checkbox se o tema for escuro
+            }
+        };
+
+        // Aplica o tema assim que a página carrega
+        applySavedTheme();
+
+        // Adiciona o evento que troca o tema quando o checkbox é alterado
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light'); // Salva a preferência
+            } else {
+                document.body.classList.remove('light-theme');
+                localStorage.setItem('theme', 'dark'); // Salva a preferência
             }
         });
     }
 
-    // ===== ESTRELAS DE FUNDO =====
-    const totalStars = 150;
-    const starContainer = document.getElementById('star-container');
-
-    if (starContainer) {
-        for (let i = 0; i < totalStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('background-star');
-
-            star.style.top = Math.random() * window.innerHeight + 'px';
-            star.style.left = Math.random() * window.innerWidth + 'px';
-            const size = Math.random() * 3 + 1;
-            star.style.width = size + 'px';
-            star.style.height = size + 'px';
-            star.style.animationDuration = (Math.random() * 5 + 3) + 's';
-
-            starContainer.appendChild(star);
-        }
-
-        window.addEventListener('resize', () => {
-            document.querySelectorAll('.background-star').forEach(star => {
-                star.style.top = Math.random() * window.innerHeight + 'px';
-                star.style.left = Math.random() * window.innerWidth + 'px';
-            });
-        });
-    }
-
-    // ===== TOGGLE SENHA =====
-    const togglePassword = document.getElementById("togglePassword");
-    const senha = document.getElementById("senha");
-
-    if (togglePassword && senha) {
-        togglePassword.addEventListener("click", () => {
-            const type = senha.type === "password" ? "text" : "password";
-            senha.type = type;
-            togglePassword.classList.toggle("fa-eye-slash");
-        });
-    }
-
-    const toggleConfirma = document.getElementById("toggleConfirmaSenha");
-    const confirmaSenha = document.getElementById("confirmaSenha");
-
-    if (toggleConfirma && confirmaSenha) {
-        toggleConfirma.addEventListener("click", () => {
-            const type = confirmaSenha.type === "password" ? "text" : "password";
-            confirmaSenha.type = type;
-            toggleConfirma.classList.toggle("fa-eye-slash");
-        });
-    }
-
-    // ===== MÁSCARA DE CPF =====
-    const cpfInput = document.getElementById("cpf");
-    if (cpfInput) {
-        cpfInput.addEventListener("input", () => {
-            let value = cpfInput.value.replace(/\D/g, "");
-            if (value.length > 11) value = value.slice(0, 11);
-
-            if (value.length > 9) {
-                value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-            } else if (value.length > 6) {
-                value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
-            } else if (value.length > 3) {
-                value = value.replace(/(\d{3})(\d{1,3})/, "$1.$2");
-            }
-            cpfInput.value = value;
-        });
-    }
-
-    // ===== VALIDAÇÃO DO FORMULÁRIO =====
-    const form = document.getElementById("registroForm");
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            if (senha.value !== confirmaSenha.value) {
-                e.preventDefault();
-                alert("As senhas não coincidem!");
-                return;
-            }
-
-            if (!cpfInput || cpfInput.value.length < 14) {
-                e.preventDefault();
-                alert("Digite um CPF válido!");
-                return;
-            }
-        });
-    }
 });

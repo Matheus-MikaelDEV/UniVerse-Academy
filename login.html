@@ -1,84 +1,85 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniVerse Academy - Login</title>
+
+    <link rel="stylesheet" href="loginregistro.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-<!-- ===== ESTRELAS DE FUNDO ===== -->
-<div id="star-container"></div>
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
 
-<!-- ===== MENU LATERAL ===== -->
-<nav class="menu">
+<button class="menu-toggle" id="menuToggle" aria-controls="sideMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
+
+<nav class="menu" id="sideMenu" aria-hidden="true">
     <div class="menu-header">
-        <h2>UniVerse</h2>
+        <h2>UniVerse Academy</h2>
     </div>
-    <p>Faça o Login para ter acesso ao menu!</p>
+    <p>Bem-vindo à UniVerse Academy. Onde o conhecimento encontra o cosmos.</p>
+
     <div class="theme-switch">
         <input type="checkbox" id="themeToggle">
-        <label for="themeToggle" class="switch">
-            <span class="slider">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-            </span>
-        </label>
+        <label for="themeToggle" class="switch"></label>
     </div>
 </nav>
 
-<!-- ===== BOTÃO TOGGLE MENU ===== -->
-<button class="menu-toggle"><i class="fas fa-bars"></i></button>
+<main>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h1>Login</h1>
 
-<!-- ===== LOGIN CENTRAL ===== -->
-<div class="login-wrapper">
-    <h1>UniVerse Academy</h1>
-    <div class="login-container">
-        <form>
-            <input type="text" placeholder="Usuário" required>
-
-            <!-- Input de senha com olhinho -->
-            <div class="password-wrapper">
-                <input type="password" id="senha" placeholder="Senha" required>
-                <i class="fas fa-eye" id="togglePassword"></i>
-            </div>
-
-            <button type="submit">Entrar</button>
-
-            <div class="social-login-icons">
-                <p>Ou faça login com:</p>
-                <div class="icons-wrapper">
-                    <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
-                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+            <form id="loginForm" novalidate>
+                <div class="input-group">
+                    <input type="email" id="loginEmail" placeholder=" " required>
+                    <label for="loginEmail">Email</label>
+                    <div class="error-message" id="loginEmailError"></div>
                 </div>
-            </div>
 
-            <div class="register-redirect">
-                <p>Não tem uma conta? <a href="registro.html">Cadastre-se</a></p>
-            </div>
-        </form>
+                <div class="password-wrapper">
+                    <div class="input-group">
+                        <input type="password" id="loginSenha" placeholder=" " required>
+                        <label for="loginSenha">Senha</label>
+                    </div>
+                    <button type="button" class="password-toggle" id="toggleLoginSenha" aria-label="Toggle password visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="error-message" id="loginSenhaError"></div>
+
+                <button type="submit" class="login-btn">Entrar</button>
+
+                <div class="social-login-icons">
+                    <p>Ou entre com</p>
+                    <div class="icons-wrapper">
+                        <a href="#" class="social-icon google" aria-label="Login with Google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social-icon facebook" aria-label="Login with Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon twitter" aria-label="Login with Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="register-redirect">
+                    <p>Não tem uma conta? <a href="registro.html">Registre-se</a></p>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</main>
 
-<!-- ===== PROFESSOR FIXO ===== -->
-<div class="professor-wrapper">
-    <div class="professor">
-        <img src="cabeca.png" alt="Cabeça do Professor" class="professor-head">
-        <img src="corpo.png" alt="Corpo do Professor" class="professor-body">
-    </div>
-    <div class="speech-bubble">Olá! Vamos realizar seu Login! 👋</div>
-</div>
-
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
-    <div class="footer-container">
-        <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
-    </div>
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
 </footer>
 
-<script src="index.js"></script>
+<script src="loginregistro.js"></script>
 </body>
 </html>

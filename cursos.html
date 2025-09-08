@@ -1,71 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cursos</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - UniVerse Academy</title>
+
+    <link rel="stylesheet" href="cursos.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-<div id="star-container"></div>
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
 
-<nav class="menu">
+<button class="menu-toggle" aria-label="Abrir Menu">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
+
+<aside class="menu">
     <div class="menu-header">
-        <h2>UniVerse</h2>
+        <h2>UniVerse Academy</h2>
     </div>
-    <ul>
-        <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="#"><i class="fa-solid fa-book"></i> Cursos</a></li>
-        <li><a href="#"><i class="fa-solid fa-circle-question"></i> Suporte</a></li>
-        <li><a href="#"><i class="fa-solid fa-circle-info"></i> Sobre</a></li>
-    </ul>
+    <p>Navegue pelas seções do nosso universo de aprendizado.</p>
+
+    <nav class="menu-nav">
+        <a href="cursos.html" class="active">Cursos</a>
+        <a href="info.html">Info</a>
+    </nav>
+
     <div class="theme-switch">
-        <input type="checkbox" id="themeToggle">
-        <label for="themeToggle" class="switch">
-        <span class="slider">
-            <i class="fas fa-sun"></i> <i class="fas fa-moon"></i> </span>
-        </label>
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="switch"></label>
     </div>
-</nav>
+</aside>
 
-<div class="menu-toggle"><i class="fas fa-bars"></i></div>
+<main>
+    <div class="courses-wrapper">
+        <div class="courses-container">
+            <h1>Explore Nossos Cursos</h1>
+            <p class="text-color-muted" style="margin-top: -1rem; margin-bottom: 2rem;">Encontre a trilha de conhecimento perfeita para sua carreira.</p>
 
-<div id="page-container">
-    <div class="wrapper">
-        <div class="header">
-            <h1>UniVerse Academy</h1>
-        </div>
-
-        <div class="container">
-            <h2>Cursos</h2>
-            <div class="cursos-wrapper">
-                <div class="curso-card">
-                    <h3>Caminhos da Ciência</h3>
-                    <img src="professor_mal_tips.jpg" alt="Imagem do curso">
-                    <button>Acessar Curso</button>
-                </div>
+            <div class="filter-bar">
+                <input type="search" class="search-input" placeholder="Buscar por nome ou tecnologia...">
             </div>
-        </div>
-    </div>
-</div>
 
-<div class="professor-wrapper">
-    <div class="professor">
-        <img src="cabeca.png" alt="Cabeça do Professor" class="professor-head">
-        <img src="corpo.png" alt="Corpo do Professor" class="professor-body">
-    </div>
-    <div class="speech-bubble">Olá! Eu sou o Professor da UniVerse Academy! 👋</div>
-</div>
+            <div class="course-grid">
 
-<!-- ===== COPYRIGHT ===== -->
+                <div class="course-card">
+                    <img src="https://picsum.photos/400/250?random=1" alt="Capa do curso de JavaScript">
+                    <div class="course-content">
+                        <h3>JavaScript Moderno: Do Zero ao Avançado</h3>
+                        <p>Domine a linguagem que move a web. Aprenda ES6+, Promises, Async/Await e construa projetos reais.</p>
+                        <button class="course-btn">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://picsum.photos/400/250?random=2" alt="Capa do curso de React">
+                    <div class="course-content">
+                        <h3>React.js para Iniciantes</h3>
+                        <p>Crie interfaces dinâmicas e reativas com a biblioteca mais popular do mercado. Aprenda componentes, hooks e estado.</p>
+                        <button class="course-btn">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://picsum.photos/400/250?random=3" alt="Capa do curso de Node.js">
+                    <div class="course-content">
+                        <h3>Backend com Node.js e Express</h3>
+                        <p>Construa APIs RESTful robustas e escaláveis. Explore o mundo do backend com JavaScript, Express, e bancos de dados.</p>
+                        <button class="course-btn">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://picsum.photos/400/250?random=4" alt="Capa do curso de Design de UI/UX">
+                    <div class="course-content">
+                        <h3>UI/UX Design: Foco em Figma</h3>
+                        <p>Aprenda os fundamentos do design de interfaces e experiência do usuário, prototipando projetos incríveis no Figma.</p>
+                        <button class="course-btn">Ver Detalhes</button>
+                    </div>
+                </div>
+
+            </div> </div> </div> </main>
+
 <footer class="footer">
-    <div class="footer-container">
-        <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
-    </div>
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
 </footer>
 
-<script src="index.js"></script>
+<script src="cursos.js"></script>
+
 </body>
 </html>
