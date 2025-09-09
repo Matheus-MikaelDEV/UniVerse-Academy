@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação do Curso - UniVerse Academy</title>
+    <link rel="stylesheet" href="formulario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
+
+<button class="menu-toggle" aria-label="Abrir Menu">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
+
+<aside class="menu">
+    <div class="menu-header">
+        <h2>UniVerse Academy</h2>
+    </div>
+    <nav class="menu-nav">
+        <a href="#cursos">Cursos</a>
+        <a href="#info">Informações</a>
+        <a href="formulario.html" class="active">Avaliação</a>
+    </nav>
+    <p>Sua opinião é fundamental para a evolução dos nossos cursos. Agradecemos sua colaboração!</p>
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="switch"></label>
+    </div>
+</aside>
+
+<main>
+    <div class="form-wrapper">
+        <div class="form-container">
+            <h1>Avaliação de Satisfação do Curso</h1>
+            <p class="subtitle">Por favor, responda às perguntas abaixo para nos ajudar a melhorar.</p>
+
+            <form id="evaluationForm">
+                <div class="form-group">
+                    <label for="expectativas">O curso atendeu às minhas expectativas iniciais? *</label>
+                    <div class="likert-scale">
+                        <span>Discordo totalmente</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="expectativas" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="expectativas" value="2"><span>2</span></label>
+                            <label><input type="radio" name="expectativas" value="3"><span>3</span></label>
+                            <label><input type="radio" name="expectativas" value="4"><span>4</span></label>
+                            <label><input type="radio" name="expectativas" value="5"><span>5</span></label>
+                        </div>
+                        <span>Concordo totalmente</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="relevancia">Os conteúdos abordados foram relevantes para minha prática docente? *</label>
+                    <div class="likert-scale">
+                        <span>Discordo totalmente</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="relevancia" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="relevancia" value="2"><span>2</span></label>
+                            <label><input type="radio" name="relevancia" value="3"><span>3</span></label>
+                            <label><input type="radio" name="relevancia" value="4"><span>4</span></label>
+                            <label><input type="radio" name="relevancia" value="5"><span>5</span></label>
+                        </div>
+                        <span>Concordo totalmente</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="metodologia">A metodologia utilizada favoreceu a aprendizagem significativa? *</label>
+                    <div class="likert-scale">
+                        <span>Discordo totalmente</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="metodologia" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="metodologia" value="2"><span>2</span></label>
+                            <label><input type="radio" name="metodologia" value="3"><span>3</span></label>
+                            <label><input type="radio" name="metodologia" value="4"><span>4</span></label>
+                            <label><input type="radio" name="metodologia" value="5"><span>5</span></label>
+                        </div>
+                        <span>Concordo totalmente</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>A comunicação e os materiais de apoio foram claros e acessíveis. *</label>
+                    <div class="likert-scale">
+                        <span>Muito insatisfeito</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="comunicacao" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="comunicacao" value="2"><span>2</span></label>
+                            <label><input type="radio" name="comunicacao" value="3"><span>3</span></label>
+                            <label><input type="radio" name="comunicacao" value="4"><span>4</span></label>
+                            <label><input type="radio" name="comunicacao" value="5"><span>5</span></label>
+                        </div>
+                        <span>Muito satisfeito</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Como você avalia a organização geral do curso? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="organizacao" value="Excelente" required> Excelente</label>
+                        <label><input type="radio" name="organizacao" value="Bom"> Bom</label>
+                        <label><input type="radio" name="organizacao" value="Regular"> Regular</label>
+                        <label><input type="radio" name="organizacao" value="Insatisfatório"> Insatisfatório</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Você aplicaria as estratégias aprendidas em suas aulas? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="aplicaria" value="Sim, com certeza" required> Sim, com certeza</label>
+                        <label><input type="radio" name="aplicaria" value="Provavelmente"> Provavelmente</label>
+                        <label><input type="radio" name="aplicaria" value="Talvez"> Talvez</label>
+                        <label><input type="radio" name="aplicaria" value="Não aplicaria"> Não aplicaria</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pontoForte">Qual foi, em sua opinião, o maior ponto forte do curso? *</label>
+                    <textarea id="pontoForte" name="pontoForte" rows="4" required placeholder="Descreva o que você mais gostou..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="melhoria">O que poderia ser melhorado para futuras edições? *</label>
+                    <textarea id="melhoria" name="melhoria" rows="4" required placeholder="Deixe sua sugestão..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="impacto">De que forma o curso impactou sua visão sobre ensino de Ciências? *</label>
+                    <textarea id="impacto" name="impacto" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="depoimento">Deixe um depoimento breve sobre sua experiência geral no curso.</label>
+                    <textarea id="depoimento" name="depoimento" rows="4" placeholder="Seu depoimento pode ser usado em nossas divulgações..."></textarea>
+                </div>
+
+                <button type="submit" class="cta-btn">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
+</footer>
+
+<script src="formulario.js"></script>
+</body>
+</html>
