@@ -254,15 +254,42 @@ body.light-theme .switch { background-color: var(--light-input-bg); }
 
 /* ===== FOOTER ===== */
 .footer {
-    margin-top: auto;
     width: 100%;
     text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
+    padding: 25px 20px;
+    font-size: 0.95rem;
     color: var(--text-color-muted);
-    background: rgba(26, 26, 46, 0.5);
-    z-index: 2;
+    background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(40,40,70,0.85));
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
     position: relative;
+}
+
+/* Efeito de brilho suave no texto */
+.footer p {
+    margin: 5px 0;
+    color: var(--text-color-muted);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer p:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Links no footer */
+.footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
 }
 
 /* ===== LIGHT THEME ===== */

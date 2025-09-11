@@ -24,12 +24,13 @@
     <div class="menu-header">
         <h2>UniVerse Academy</h2>
     </div>
+
     <nav class="menu-nav">
-        <a href="#cursos">Cursos</a>
-        <a href="#info">Informações</a>
-        <a href="formulario.html" class="active">Avaliação</a>
+        <a href="index.html">Início</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="formulario.html" class="Active"> Formulário Temp.</a>
     </nav>
-    <p>Sua opinião é fundamental para a evolução dos nossos cursos. Agradecemos sua colaboração!</p>
+
     <div class="theme-switch">
         <input type="checkbox" id="theme-toggle">
         <label for="theme-toggle" class="switch"></label>
@@ -44,7 +45,7 @@
 
             <form id="evaluationForm">
                 <div class="form-group">
-                    <label for="expectativas">O curso atendeu às minhas expectativas iniciais? *</label>
+                    <label>O curso atendeu às minhas expectativas iniciais? *</label>
                     <div class="likert-scale">
                         <span>Discordo totalmente</span>
                         <div class="radio-options">
@@ -59,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="relevancia">Os conteúdos abordados foram relevantes para minha prática docente? *</label>
+                    <label>Os conteúdos abordados foram relevantes para minha prática docente? *</label>
                     <div class="likert-scale">
                         <span>Discordo totalmente</span>
                         <div class="radio-options">
@@ -74,7 +75,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="metodologia">A metodologia utilizada favoreceu a aprendizagem significativa? *</label>
+                    <label>A metodologia utilizada favoreceu a aprendizagem significativa? *</label>
                     <div class="likert-scale">
                         <span>Discordo totalmente</span>
                         <div class="radio-options">
@@ -86,6 +87,69 @@
                         </div>
                         <span>Concordo totalmente</span>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label>O tempo destinado às atividades foi adequado *</label>
+                    <div class="likert-scale">
+                        <span>Muito insatisfeito</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="tempo" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="tempo" value="2"><span>2</span></label>
+                            <label><input type="radio" name="tempo" value="3"><span>3</span></label>
+                            <label><input type="radio" name="tempo" value="4"><span>4</span></label>
+                            <label><input type="radio" name="tempo" value="5"><span>5</span></label>
+                        </div>
+                        <span>Muito satisfeito</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>A interação com os colegas e formadores contribuiu para meu aprendizado *</label>
+                    <div class="likert-scale">
+                        <span>Muito insatisfeito</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="interacao" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="interacao" value="2"><span>2</span></label>
+                            <label><input type="radio" name="interacao" value="3"><span>3</span></label>
+                            <label><input type="radio" name="interacao" value="4"><span>4</span></label>
+                            <label><input type="radio" name="interacao" value="5"><span>5</span></label>
+                        </div>
+                        <span>Muito satisfeito</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Como você avalia a organização geral do curso? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="organizacao" value="Excelente" required> Excelente</label>
+                        <label><input type="radio" name="organizacao" value="Bom"> Bom</label>
+                        <label><input type="radio" name="organizacao" value="Regular"> Regular</label>
+                        <label><input type="radio" name="organizacao" value="Insatisfatório"> Insatisfatório</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Você recomendaria este curso para outros professores? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="recomendacao" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="recomendacao" value="Não"> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pontoForte">Qual foi, em sua opinião, o maior ponto forte do curso? *</label>
+                    <textarea id="pontoForte" name="pontoForte" rows="4" required placeholder="Descreva o que você mais gostou..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="melhoria">O que poderia ser melhorado para futuras edições? *</label>
+                    <textarea id="melhoria" name="melhoria" rows="4" required placeholder="Deixe sua sugestão..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="impactoCurso">De que forma o curso impactou sua visão sobre ensino de Ciências? *</label>
+                    <textarea id="impactoCurso" name="impactoCurso" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -104,43 +168,78 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Como você avalia a organização geral do curso? *</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="organizacao" value="Excelente" required> Excelente</label>
-                        <label><input type="radio" name="organizacao" value="Bom"> Bom</label>
-                        <label><input type="radio" name="organizacao" value="Regular"> Regular</label>
-                        <label><input type="radio" name="organizacao" value="Insatisfatório"> Insatisfatório</label>
+                    <label>A carga horária do curso foi suficiente para desenvolver os conteúdos *</label>
+                    <div class="likert-scale">
+                        <span>Muito insatisfeito</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="cargaHoraria" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="cargaHoraria" value="2"><span>2</span></label>
+                            <label><input type="radio" name="cargaHoraria" value="3"><span>3</span></label>
+                            <label><input type="radio" name="cargaHoraria" value="4"><span>4</span></label>
+                            <label><input type="radio" name="cargaHoraria" value="5"><span>5</span></label>
+                        </div>
+                        <span>Muito satisfeito</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Você aplicaria as estratégias aprendidas em suas aulas? *</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="aplicaria" value="Sim, com certeza" required> Sim, com certeza</label>
-                        <label><input type="radio" name="aplicaria" value="Provavelmente"> Provavelmente</label>
-                        <label><input type="radio" name="aplicaria" value="Talvez"> Talvez</label>
-                        <label><input type="radio" name="aplicaria" value="Não aplicaria"> Não aplicaria</label>
+                    <label>A plataforma ou espaço de realização do curso foi fácil de utilizar. *</label>
+                    <div class="likert-scale">
+                        <span>Muito insatisfeito</span>
+                        <div class="radio-options">
+                            <label><input type="radio" name="plataforma" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="plataforma" value="2"><span>2</span></label>
+                            <label><input type="radio" name="plataforma" value="3"><span>3</span></label>
+                            <label><input type="radio" name="plataforma" value="4"><span>4</span></label>
+                            <label><input type="radio" name="plataforma" value="5"><span>5</span></label>
+                        </div>
+                        <span>Muito satisfeito</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="pontoForte">Qual foi, em sua opinião, o maior ponto forte do curso? *</label>
-                    <textarea id="pontoForte" name="pontoForte" rows="4" required placeholder="Descreva o que você mais gostou..."></textarea>
+                    <label for="aprofundar">Houve algum conteúdo ou atividade que você gostaria de aprofundar? Qual? *</label>
+                    <textarea id="aprofundar" name="aprofundar" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="melhoria">O que poderia ser melhorado para futuras edições? *</label>
-                    <textarea id="melhoria" name="melhoria" rows="4" required placeholder="Deixe sua sugestão..."></textarea>
+                    <label for="marcante">Qual foi a atividade ou recurso mais marcante do curso? *</label>
+                    <textarea id="marcante" name="marcante" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="impacto">De que forma o curso impactou sua visão sobre ensino de Ciências? *</label>
-                    <textarea id="impacto" name="impacto" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                    <label for="motivacao">Qual é a sua principal motivação para participar de formações continuadas? *</label>
+                    <textarea id="motivacao" name="motivacao" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="depoimento">Deixe um depoimento breve sobre sua experiência geral no curso.</label>
-                    <textarea id="depoimento" name="depoimento" rows="4" placeholder="Seu depoimento pode ser usado em nossas divulgações..."></textarea>
+                    <label for="recursos">Que recursos tecnológicos você mais utiliza em suas aulas? *</label>
+                    <textarea id="recursos" name="recursos" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="avaliacaoAulas">Como você costuma avaliar se suas aulas estão sendo significativas para os alunos?</label>
+                    <textarea id="avaliacaoAulas" name="avaliacaoAulas" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="competencias">Que competências considera essenciais para o ensino de Ciências hoje? *</label>
+                    <textarea id="competencias" name="competencias" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="expectativasFuturas">O que você espera de futuros cursos de formação docente? *</label>
+                    <textarea id="expectativasFuturas" name="expectativasFuturas" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="novoTema">Se pudesse acrescentar um novo tema ao curso, qual seria? *</label>
+                    <textarea id="novoTema" name="novoTema" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="depoimento">Deixe um depoimento breve sobre sua experiência geral no curso. *</label>
+                    <textarea id="depoimento" name="depoimento" rows="4" required placeholder="Conte-nos sobre o impacto..."></textarea>
                 </div>
 
                 <button type="submit" class="cta-btn">Enviar Avaliação</button>
@@ -151,6 +250,7 @@
 
 <footer class="footer">
     <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
+    <a href="idealizadores.html">Idealizadores</a>
 </footer>
 
 <script src="formulario.js"></script>
