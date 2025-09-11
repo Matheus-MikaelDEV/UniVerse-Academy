@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===== 1. ELEMENTOS =====
-    const menuToggle = document.getElementById('menuToggle');
-    const sideMenu = document.getElementById('sideMenu');
-    const themeToggle = document.getElementById('themeToggle');
+    // ===== 1. ELEMENTOS GLOBAIS =====
+    const menuToggle = document.getElementById('menuToggle') || document.querySelector('.menu-toggle');
+    const sideMenu = document.getElementById('sideMenu') || document.querySelector('.menu');
+    const themeToggle = document.getElementById('themeToggle') || document.getElementById('theme-toggle');
 
     // FORMULÁRIO REGISTRO
     const registroForm = document.getElementById('registroForm');
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const registroCPF = document.getElementById('registroCPF');
     const registroSenha = document.getElementById('registroSenha');
     const registroConfirmaSenha = document.getElementById('registroConfirmaSenha');
-
     const registroNomeError = document.getElementById('registroNomeError');
     const registroEmailError = document.getElementById('registroEmailError');
     const registroCPFError = document.getElementById('registroCPFError');
@@ -26,82 +25,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginEmailError = document.getElementById('loginEmailError');
     const loginSenhaError = document.getElementById('loginSenhaError');
 
+    // ELEMENTOS PÁGINA DE CURSOS
+    const searchInput = document.querySelector('.search-input');
+    const courseCards = document.querySelectorAll('.course-card');
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // ===== 2. MENU LATERAL =====
+    if(menuToggle && sideMenu){
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            sideMenu.setAttribute('aria-hidden', isExpanded);
+        });
+    }
 
-        // ===== 1. ELEMENTOS GLOBAIS E DA PÁGINA DE CURSOS =====
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sideMenu = document.querySelector('.menu');
-        const themeToggle = document.getElementById('theme-toggle');
+    // ===== 3. TEMA (DARK/LIGHT) =====
+    if(themeToggle){
+        const applySavedTheme = () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if(savedTheme === 'light'){
+                document.body.classList.add('light-theme');
+                themeToggle.checked = true;
+            } else {
+                document.body.classList.remove('light-theme');
+                themeToggle.checked = false;
+            }
+        };
+        applySavedTheme();
 
-        // Elementos específicos da página de Cursos
-        const searchInput = document.querySelector('.search-input');
-        const courseCards = document.querySelectorAll('.course-card');
+        themeToggle.addEventListener('change', () => {
+            if(themeToggle.checked){
+                document.body.classList.add('light-theme');
+                localStorage.setItem('theme','light');
+            } else {
+                document.body.classList.remove('light-theme');
+                localStorage.setItem('theme','dark');
+            }
+        });
+    }
 
-        // ===== 2. FUNCIONALIDADE DO MENU LATERAL =====
-        if (menuToggle && sideMenu) {
-            menuToggle.addEventListener('click', () => {
-                // Alterna as classes para mostrar/esconder o menu e animar o ícone
-                sideMenu.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-
-                // Melhora a acessibilidade informando o estado do menu
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                sideMenu.setAttribute('aria-hidden', isExpanded);
+    // ===== 4. FILTRO DE CURSOS =====
+    if(searchInput && courseCards.length > 0){
+        searchInput.addEventListener('input', () => {
+            const term = searchInput.value.toLowerCase().trim();
+            courseCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                card.style.display = title.includes(term) ? 'flex' : 'none';
             });
-        }
+        });
+    }
 
-        // ===== 3. FUNCIONALIDADE DO SELETOR DE TEMA (DARK/LIGHT) =====
-        if (themeToggle) {
-            // Função para aplicar o tema salvo no localStorage ao carregar a página
-            const applySavedTheme = () => {
-                const savedTheme = localStorage.getItem('theme') || 'dark'; // 'dark' é o padrão
-                if (savedTheme === 'light') {
-                    document.body.classList.add('light-theme');
-                    themeToggle.checked = true;
-                } else {
-                    document.body.classList.remove('light-theme');
-                    themeToggle.checked = false;
-                }
-            };
-            applySavedTheme();
-
-            // Listener para salvar a preferência do usuário quando ele muda o tema
-            themeToggle.addEventListener('change', () => {
-                if (themeToggle.checked) {
-                    document.body.classList.add('light-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.body.classList.remove('light-theme');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        }
-
-        // ===== 4. FILTRO DE BUSCA DE CURSOS (NOVA FUNCIONALIDADE) =====
-        if (searchInput && courseCards.length > 0) {
-            searchInput.addEventListener('input', () => {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-
-                courseCards.forEach(card => {
-                    // Pega o texto do título do curso dentro do card
-                    const courseTitle = card.querySelector('h3').textContent.toLowerCase();
-
-                    // Verifica se o título do curso inclui o termo pesquisado
-                    if (courseTitle.includes(searchTerm)) {
-                        card.style.display = 'flex'; // Mostra o card
-                    } else {
-                        card.style.display = 'none'; // Esconde o card
-                    }
-                });
-            });
-        }
-
-    });
-
-
-    // ===== 4. SHOW/HIDE SENHA =====
+    // ===== 5. SHOW/HIDE SENHA =====
     const setupPasswordToggle = (toggleId, inputId) => {
         const toggle = document.getElementById(toggleId);
         const input = document.getElementById(inputId);
@@ -111,32 +86,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.setAttribute('type', type);
                 const icon = toggle.querySelector('i');
                 if(type === 'password'){
-                    icon.classList.remove('fa-eye-slash');
-                    icon.classList.add('fa-eye');
+                    icon.classList.remove('fa-eye-slash'); icon.classList.add('fa-eye');
                 } else {
-                    icon.classList.remove('fa-eye');
-                    icon.classList.add('fa-eye-slash');
+                    icon.classList.remove('fa-eye'); icon.classList.add('fa-eye-slash');
                 }
             });
         }
     };
+    setupPasswordToggle('toggleRegistroSenha','registroSenha');
+    setupPasswordToggle('toggleRegistroConfirmaSenha','registroConfirmaSenha');
+    setupPasswordToggle('toggleLoginSenha','loginSenha');
 
-    setupPasswordToggle('toggleRegistroSenha', 'registroSenha');
-    setupPasswordToggle('toggleRegistroConfirmaSenha', 'registroConfirmaSenha');
-    setupPasswordToggle('toggleLoginSenha', 'loginSenha');
-
-    // ===== 5. FORMATAÇÃO CPF =====
+    // ===== 6. FORMATAÇÃO CPF =====
     if(registroCPF){
-        registroCPF.addEventListener('input', (e) => {
+        registroCPF.addEventListener('input',(e)=>{
             let v = e.target.value.replace(/\D/g,'');
-            v = v.replace(/(\d{3})(\d)/,'$1.$2');
-            v = v.replace(/(\d{3})(\d)/,'$1.$2');
-            v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+            v=v.replace(/(\d{3})(\d)/,'$1.$2');
+            v=v.replace(/(\d{3})(\d)/,'$1.$2');
+            v=v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
             e.target.value = v;
         });
     }
 
-    // ===== 6. VALIDAÇÃO REGISTRO =====
+    // ===== 7. VALIDAÇÃO REGISTRO =====
     if(registroForm){
         const showError = (input,errorEl,message) => { input.classList.add('input-error'); errorEl.textContent = message; };
         const clearError = (input,errorEl) => { input.classList.remove('input-error'); errorEl.textContent = ''; };
@@ -148,29 +120,29 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if(registroSenha && passwordRules.length){
-            registroSenha.addEventListener('input', () => {
+            registroSenha.addEventListener('input',()=>{
                 const val = registroSenha.value;
-                val.length >=8 ? passwordRules.length.classList.add('valid') : passwordRules.length.classList.remove('valid');
+                val.length>=8 ? passwordRules.length.classList.add('valid') : passwordRules.length.classList.remove('valid');
                 /\d/.test(val) ? passwordRules.number.classList.add('valid') : passwordRules.number.classList.remove('valid');
                 /[A-Z]/.test(val) ? passwordRules.uppercase.classList.add('valid') : passwordRules.uppercase.classList.remove('valid');
             });
         }
 
-        registroForm.addEventListener('submit', (e)=>{
+        registroForm.addEventListener('submit',(e)=>{
             e.preventDefault();
             let isValid = true;
-            clearError(registroNome, registroNomeError);
-            clearError(registroEmail, registroEmailError);
-            clearError(registroCPF, registroCPFError);
-            clearError(registroSenha, registroSenhaError);
-            clearError(registroConfirmaSenha, registroConfirmaSenhaError);
+            clearError(registroNome,registroNomeError);
+            clearError(registroEmail,registroEmailError);
+            clearError(registroCPF,registroCPFError);
+            clearError(registroSenha,registroSenhaError);
+            clearError(registroConfirmaSenha,registroConfirmaSenhaError);
 
-            if(registroNome.value.trim().length<3){ showError(registroNome, registroNomeError,'O nome completo é obrigatório.'); isValid=false; }
+            if(registroNome.value.trim().length<3){ showError(registroNome,registroNomeError,'O nome completo é obrigatório.'); isValid=false; }
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailRegex.test(registroEmail.value.trim())){ showError(registroEmail, registroEmailError,'Por favor insira um email válido.'); isValid=false; }
-            if(registroCPF.value.length !== 14){ showError(registroCPF, registroCPFError,'O CPF deve ter 11 dígitos.'); isValid=false; }
-            if(registroSenha.value.length<8 || !/\d/.test(registroSenha.value) || !/[A-Z]/.test(registroSenha.value)){ showError(registroSenha, registroSenhaError,'A senha não atende aos critérios abaixo.'); isValid=false; }
-            if(registroConfirmaSenha.value !== registroSenha.value){ showError(registroConfirmaSenha, registroConfirmaSenhaError,'As senhas não coincidem.'); isValid=false; }
+            if(!emailRegex.test(registroEmail.value.trim())){ showError(registroEmail,registroEmailError,'Por favor insira um email válido.'); isValid=false; }
+            if(registroCPF.value.length!==14){ showError(registroCPF,registroCPFError,'O CPF deve ter 11 dígitos.'); isValid=false; }
+            if(registroSenha.value.length<8 || !/\d/.test(registroSenha.value) || !/[A-Z]/.test(registroSenha.value)){ showError(registroSenha,registroSenhaError,'A senha não atende aos critérios abaixo.'); isValid=false; }
+            if(registroConfirmaSenha.value!==registroSenha.value){ showError(registroConfirmaSenha,registroConfirmaSenhaError,'As senhas não coincidem.'); isValid=false; }
 
             if(isValid){
                 alert(`Cadastro realizado com sucesso!\nBem-vindo(a), ${registroNome.value.trim()}! 🚀`);
@@ -180,20 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== 7. VALIDAÇÃO LOGIN =====
+    // ===== 8. VALIDAÇÃO LOGIN =====
     if(loginForm){
         const showError = (input,errorEl,message) => { input.classList.add('input-error'); errorEl.textContent = message; };
         const clearError = (input,errorEl) => { input.classList.remove('input-error'); errorEl.textContent = ''; };
 
-        loginForm.addEventListener('submit', (e)=>{
+        loginForm.addEventListener('submit',(e)=>{
             e.preventDefault();
             let isValid = true;
-            clearError(loginEmail, loginEmailError);
-            clearError(loginSenha, loginSenhaError);
+            clearError(loginEmail,loginEmailError);
+            clearError(loginSenha,loginSenhaError);
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailRegex.test(loginEmail.value.trim())){ showError(loginEmail, loginEmailError,'Por favor insira um email válido.'); isValid=false; }
-            if(loginSenha.value.length<8){ showError(loginSenha, loginSenhaError,'A senha deve ter pelo menos 8 caracteres.'); isValid=false; }
+            if(!emailRegex.test(loginEmail.value.trim())){ showError(loginEmail,loginEmailError,'Por favor insira um email válido.'); isValid=false; }
+            if(loginSenha.value.length<8){ showError(loginSenha,loginSenhaError,'A senha deve ter pelo menos 8 caracteres.'); isValid=false; }
 
             if(isValid){
                 alert(`Login realizado com sucesso!\nBem-vindo(a), ${loginEmail.value.trim()}! 🚀`);
