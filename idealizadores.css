@@ -58,7 +58,7 @@ main {
 .star-near { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><circle fill="white" cx="200" cy="200" r="2"/><circle fill="white" cx="500" cy="450" r="2"/></svg>'); background-size: 600px 600px; animation-duration: 100s; }
 @keyframes move-stars { from { transform: translateY(0); } to { transform: translateY(-1000px); } }
 
-/* ===== SIDE MENU ===== */
+/* ===== MENU LATERAL ===== */
 .menu {
     position: fixed;
     top: 0;
@@ -68,24 +68,62 @@ main {
     background: rgba(26, 26, 46, 0.85);
     backdrop-filter: blur(12px);
     border-right: 2px solid var(--primary-color);
-    box-shadow: 5px 0 25px rgba(0,0,0,0.4);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
     transform: translateX(-100%);
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     align-items: center;
     text-align: center;
 }
-.menu.active { transform: translateX(0); box-shadow: 5px 0 35px rgba(204,0,255,0.5); }
-.menu-header h2 { font-size: 2.5rem; color: var(--primary-color); text-shadow: 0 0 12px var(--shadow-color); margin-bottom: 2rem; }
-.menu p {
-    font-size: 1rem;
-    color: var(--text-color-muted);
-    /* A linha 'margin-bottom: auto;' foi movida para .menu-nav para melhor posicionamento */
+
+.menu.active {
+    transform: translateX(0);
+    box-shadow: 5px 0 35px rgba(204, 0, 255, 0.5);
 }
 
+/* ===== CABEÇALHO DO MENU ===== */
+.menu-header h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 12px var(--shadow-color);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+/* ===== NAVEGAÇÃO ===== */
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.menu-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu-nav a:hover,
+.menu-nav a.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--shadow-color);
+}
+
+/* ===== TEXTO DE RODAPÉ ===== */
+.menu p {
+    font-size: 0.95rem;
+    color: var(--text-color-muted);
+    margin-top: auto;
+}
+
+/* ===== BOTÃO DE TOGGLE ===== */
 .menu-toggle {
     position: fixed;
     top: 20px;
@@ -101,67 +139,32 @@ main {
     transition: color 0.4s ease, left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     perspective: 1000px;
 }
+
 .menu-toggle i {
     position: absolute;
     top: 50%;
     left: 50%;
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
 }
+
 .menu-toggle .fa-bars { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
 .menu-toggle .fa-times { transform: translate(-50%, -50%) rotate(-90deg); opacity: 0; }
+
 .menu-toggle.active .fa-bars { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 .menu-toggle.active .fa-times { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+
 .menu-toggle:hover { color: var(--secondary-color); }
 .menu-toggle.active { left: 300px; }
 
-
-/* ===== MENU NAVIGATION (ADICIONADO) ===== */
-.menu-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+/* ===== SWITCH DE TEMA ===== */
+.theme-switch {
     margin-top: 2rem;
-    margin-bottom: auto; /* Empurra o seletor de tema para baixo */
-    gap: 0.5rem; /* Espaçamento entre os botões */
+    display: flex;
+    justify-content: center;
 }
 
-.menu-nav a {
-    text-decoration: none;
-    color: var(--text-color-muted);
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 14px 25px;
-    border-radius: 8px;
-    text-align: left;
-    position: relative;
-    border: 1px solid transparent; /* Borda invisível para evitar que o layout mude no hover */
-    transition: color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
-}
-
-/* Efeito ao passar o mouse */
-.menu-nav a:hover,
-.menu-nav a:focus { /* :focus para acessibilidade */
-    color: var(--primary-color);
-    background-color: rgba(204, 0, 255, 0.1);
-    border-color: rgba(204, 0, 255, 0.3);
-    transform: translateX(5px);
-}
-
-/* Estilo do link da página ativa */
-.menu-nav a.active {
-    color: #ffffff;
-    font-weight: 600;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 0 20px var(--shadow-color);
-}
-
-.menu-nav a.active:hover {
-    transform: translateX(0); /* O link ativo não se move no hover */
-}
-
-/* ===== THEME SWITCHER ===== */
-.theme-switch { margin-top: 2rem; display: flex; justify-content: center; }
 .theme-switch input { display: none; }
+
 .switch {
     position: relative;
     width: 60px;
@@ -169,8 +172,9 @@ main {
     background-color: var(--input-bg);
     border-radius: 34px;
     cursor: pointer;
-    transition: background-color 0.6s ease;
+    transition: background-color 0.5s ease;
 }
+
 .switch::after {
     content: '\f185';
     font-family: "Font Awesome 5 Free";
@@ -187,13 +191,23 @@ main {
     align-items: center;
     justify-content: center;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), content 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), content 0.3s ease;
 }
+
 .theme-switch input:checked + .switch::after {
     transform: translateX(26px);
     content: '\f186';
 }
+
 body.light-theme .switch { background-color: var(--light-input-bg); }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .menu { width: 240px; }
+    .menu-toggle.active { left: 260px; }
+    .menu-header h2 { font-size: 2rem; }
+    .menu-nav a { font-size: 1rem; }
+}
 
 /* ===== PAGE CONTENT ===== */
 .content-wrapper { text-align: center; max-width: 1100px; margin: 0 auto; z-index: 1; }
