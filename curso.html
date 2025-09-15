@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome do Curso - UniVerse Academy</title>
+    <link rel="stylesheet" href="curso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
+
+<button class="menu-toggle" aria-label="Abrir Menu">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
+
+<aside class="menu">
+    <div class="menu-header">
+        <h2>UniVerse Academy</h2>
+    </div>
+
+    <nav class="menu-nav">
+        <a href="index.html">Início</a>
+        <a href="cursos.html" class="active">Cursos</a>
+        <a href="#">Contato</a>
+    </nav>
+
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="switch"></label>
+    </div>
+
+    <p>&copy; 2025 UniVerse Academy.</p>
+</aside>
+
+<main>
+    <div class="course-page-wrapper">
+        <div class="course-page-container">
+
+            <div class="course-video-section">
+                <div class="course-video-player">
+                    <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <div class="course-info">
+                    <h1></h1>
+                    <p></p>
+                    <div class="edit-buttons">
+                        <button class="edit-btn" id="edit-course-btn">
+                            <i class="fas fa-edit"></i> Editar Módulo
+                        </button>
+                        <button class="add-module-btn" id="add-module-btn">
+                            <i class="fas fa-plus"></i> Adicionar Módulo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-modules-section">
+                <h2>Conteúdo do Curso</h2>
+                <div class="module-list">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
+    <div>
+        <a href="idealizadores.html">Idealizadores</a>
+    </div>
+</footer>
+
+<div id="edit-course-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Editar Módulo</h3>
+        <form id="editForm">
+            <div class="form-group">
+                <label for="videoLink">Link do Vídeo (YouTube/Vimeo)</label>
+                <input type="text" id="videoLink" name="videoLink" placeholder="Ex: https://www.youtube.com/embed/..." required>
+            </div>
+            <div class="form-group">
+                <label for="courseTitle">Título do Módulo</label>
+                <input type="text" id="courseTitle" name="courseTitle" placeholder="Insira o novo título" required>
+            </div>
+            <div class="form-group">
+                <label for="courseDescription">Descrição do Módulo</label>
+                <textarea id="courseDescription" name="courseDescription" rows="4" placeholder="Insira a nova descrição do módulo..." required></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="cancel-btn">Cancelar</button>
+                <button type="submit" class="save-btn">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="add-module-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Adicionar Novo Módulo</h3>
+        <form id="addModuleForm">
+            <div class="form-group">
+                <label for="moduleTitle">Título do Módulo</label>
+                <input type="text" id="moduleTitle" name="moduleTitle" placeholder="Ex: Módulo 5: O Futuro da Cosmologia" required>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="cancel-btn">Cancelar</button>
+                <button type="submit" class="save-btn">Adicionar Módulo</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="curso.js"></script>
+</body>
+</html>
