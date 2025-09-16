@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Usuário - UniVerse Academy</title>
+
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div id="star-container">
+    <div class="background-star star-far"></div>
+    <div class="background-star star-mid"></div>
+    <div class="background-star star-near"></div>
+</div>
+
+<button class="menu-toggle" aria-label="Abrir Menu">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+</button>
+
+<aside class="menu">
+    <div class="menu-header">
+        <h2>UniVerse Academy</h2>
+    </div>
+
+    <nav class="menu-nav">
+        <a href="index.html">Início</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="portal.html" class="active">Meu Portal</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="switch"></label>
+    </div>
+</aside>
+
+<main>
+    <div class="user-portal-wrapper">
+        <div class="user-portal-container">
+            <h1>Meu Portal</h1>
+
+            <section class="user-profile">
+                <div class="user-avatar-container">
+                    <img src="https://picsum.photos/200/200" alt="Foto de perfil do usuário" class="user-avatar">
+                    <button class="edit-profile-pic-btn" id="edit-profile-pic-btn" title="Editar foto de perfil">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="user-info-text">
+                    <h2>Olá, Nome do Usuário!</h2>
+                    <p>Bem-vindo de volta. Continue seus estudos!</p>
+                    <button class="edit-profile-info-btn" id="edit-profile-info-btn" title="Editar informações do perfil">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section class="in-progress-courses">
+                <h2>Cursos em Andamento</h2>
+
+                <div class="course-progress-card">
+                    <div class="course-info">
+                        <img src="https://picsum.photos/400/250?random=1" alt="Capa do curso de JavaScript" class="course-thumb">
+                        <div class="course-details">
+                            <h3>JavaScript Moderno: Do Zero ao Avançado</h3>
+                            <p>Módulo 5: Funções Assíncronas</p>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 75%;"></div>
+                    </div>
+                    <p class="progress-text">75% Concluído</p>
+                </div>
+
+                <div class="course-progress-card">
+                    <div class="course-info">
+                        <img src="https://picsum.photos/400/250?random=2" alt="Capa do curso de React.js" class="course-thumb">
+                        <div class="course-details">
+                            <h3>React.js para Iniciantes</h3>
+                            <p>Módulo 2: Componentes e Props</p>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 30%;"></div>
+                    </div>
+                    <p class="progress-text">30% Concluído</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</main>
+
+<div id="edit-profile-pic-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Foto de Perfil</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="profilePicForm">
+                <label for="profilePicUrl">URL da Nova Imagem:</label>
+                <input type="url" id="profilePicUrl" required placeholder="https://exemplo.com/sua-foto.jpg">
+                <div class="modal-footer">
+                    <button type="button" class="btn cancel-btn">Cancelar</button>
+                    <button type="submit" class="btn save-btn">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="edit-profile-info-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Perfil</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="profileInfoForm">
+                <label for="profileName">Nome de Usuário:</label>
+                <input type="text" id="profileName" required>
+                <label for="profileBio">Biografia:</label>
+                <textarea id="profileBio" rows="4"></textarea>
+                <div class="modal-footer">
+                    <button type="button" class="btn cancel-btn">Cancelar</button>
+                    <button type="submit" class="btn save-btn">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="edit-course-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Módulo</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="editForm">
+                <label for="videoLink">Link do Vídeo (Embed):</label>
+                <input type="url" id="videoLink" required>
+                <label for="courseTitle">Título do Módulo:</label>
+                <input type="text" id="courseTitle" required>
+                <label for="courseDescription">Descrição do Módulo:</label>
+                <textarea id="courseDescription" rows="4" required></textarea>
+                <div class="modal-footer">
+                    <button type="button" class="btn cancel-btn">Cancelar</button>
+                    <button type="submit" class="btn save-btn">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 UniVerse Academy. Todos os direitos reservados.</p>
+    <a href="idealizadores.html">Idealizadores</a>
+</footer>
+
+<script src="portal.js"></script>
+</body>
+</html>
